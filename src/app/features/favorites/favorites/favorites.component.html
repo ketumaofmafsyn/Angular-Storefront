@@ -1,0 +1,39 @@
+<div class="catalog-container">
+  <h2 class="catalog-title">Your Favorites</h2>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <!-- No favorites -->
+  <div *ngIf="!loading && products.length === 0" class="text-center py-5">
+    <p>You have no favorite products yet.</p>
+  </div>
+
+  <!-- Favorites Grid -->
+  <div class="products-grid" *ngIf="!loading && products.length">
+    <div *ngFor="let product of products" class="product-card">
+      <img [src]="product.images[0]" [alt]="product.name" class="product-image" />
+      <div class="product-info">
+        <h5 class="product-name">{{ product.name }}</h5>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">R {{ product.price | number:'1.2-2' }}</p>
+        <button
+          class="product-btn"
+          [routerLink]="['/product', product.id]"
+        >
+          View Details
+        </button>
+        <button
+          class="favorite-btn"
+          (click)="favoritesService.toggleFavorite(product.id)"
+          [class.active]="favoritesService.isFavorite(product.id)"
+        >
+          ♥
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
