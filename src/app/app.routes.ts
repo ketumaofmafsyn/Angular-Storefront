@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AdminGuard } from './core/guards/admin.guard';
+import { Routes } from '@angular/router';
 
-// Standalone component
+// Standalone components
 
-export const routes: Routes = [
+export const appRoutes: Routes = [
   {
     path: 'catalog',
     loadComponent: () =>
@@ -31,13 +32,13 @@ export const routes: Routes = [
       import('../app/features/admin/admin/admin.component').then(m => m.AdminComponent),
     canActivate: [AdminGuard]
   },
-  
+
   { path: '', redirectTo: 'catalog', pathMatch: 'full' },
   { path: '**', redirectTo: 'catalog' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

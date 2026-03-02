@@ -1,27 +1,18 @@
 import { Injectable, signal, effect, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class FavoritesService {
   private readonly STORAGE_KEY = 'favorite_product_ids';
-
-
   private favoritesSignal = signal<number[]>([]);
-
   favorites$ = this.favoritesSignal.asReadonly();
-
   private isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
-
-
     if (this.isBrowser) {
       this.favoritesSignal.set(this.loadFromStorage());
 
-      
       effect(() => {
         localStorage.setItem(
           this.STORAGE_KEY,
@@ -40,11 +31,7 @@ export class FavoritesService {
     }
   }
 
-  isFavorite(productId: number): boolean {
-    return this.favoritesSignal().includes(productId);
-  }
-
-  toggleFavorite(productId: number): void {
+  toggleFavorite(productId: number) {
     this.favoritesSignal.update(ids =>
       ids.includes(productId)
         ? ids.filter(id => id !== productId)
@@ -52,15 +39,11 @@ export class FavoritesService {
     );
   }
 
-  getFavorites(): number[] {
-    return this.favoritesSignal();
+  isFavorite(productId: number): boolean {
+    return this.favoritesSignal().includes(productId);
   }
 
   getFavoritesCount(): number {
-    return this.favorites$().length;
-  }
-
-  clear(): void {
-    this.favoritesSignal.set([]);
+    return this.favoritesSignal().length;
   }
 }

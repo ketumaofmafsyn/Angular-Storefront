@@ -2,54 +2,42 @@
   <div class="row">
     <!-- Image gallery -->
     <div class="col-12 col-md-6 gallery">
-      <img
-        [src]="product.images[currentImageIndex()]"
-        [alt]="product.name"
-        class="img-fluid rounded shadow-sm main-image"
-      />
+      <img [src]="product.images[currentImageIndex()]" [alt]="product.title" class="img-fluid rounded shadow-sm main-image"/>
+      <div class="gallery-controls-wrapper mt-2">
+        <button class="gallery-btn" (click)="prevImage()">&#8592; Previous</button>
+        <button class="gallery-btn" (click)="nextImage()">Next &#8594;</button>
+      </div>
 
-  <div class="gallery-controls-wrapper">
-  <button class="gallery-btn" (click)="prevImage()">&#8592; Previous</button>
-  <button class="gallery-btn" (click)="nextImage()">Next &#8594;</button>
-</div>
-      <!-- Thumbnails -->
       <div class="thumbnails mt-2 d-flex gap-2 flex-wrap">
-        <img
-          *ngFor="let img of product.images; let idx = index"
-          [src]="img"
-          [class.active]="idx === currentImageIndex()"
-          (click)="currentImageIndex.set(idx)"
-          class="thumbnail-img"
-        />
+        <img *ngFor="let img of product.images; let idx = index"
+             [src]="img"
+             [class.active]="idx === currentImageIndex()"
+             (click)="currentImageIndex.set(idx)"
+             class="thumbnail-img"/>
       </div>
     </div>
 
     <!-- Product info -->
     <div class="col-12 col-md-6">
-      <h2 class="fw-bold">{{ product.name }}</h2>
+      <h2 class="fw-bold">{{ product.title }}</h2>
       <p class="text-muted">{{ product.category }}</p>
       <p>{{ product.description }}</p>
       <p class="fw-bold display-6">R {{ product.price | number:'1.2-2' }}</p>
 
-     <button
-  class="favorite-details-btn mt-2"
-  (click)="favoritesService.toggleFavorite(product.id)"
->
-  {{ favoritesService.isFavorite(product.id) ? '♥ Remove from Favorites' : '♡ Add to Favorites' }}
-</button>
+      <button class="favorite-details-btn mt-2" (click)="favoritesService.toggleFavorite(product.id)">
+        {{ favoritesService.isFavorite(product.id) ? '♥ Remove from Favorites' : '♡ Add to Favorites' }}
+      </button>
+
       <div class="back-button-wrapper mt-3">
-        <button class="back-button" routerLink="/catalog">
-          Back to Catalog
-        </button>
+        <button class="back-button" routerLink="/catalog">Back to Catalog</button>
       </div>
     </div>
   </div>
 </div>
- <!-- Loading spinner -->
- <div *ngIf="loading()" class="loading-container">
-  <div class="spinner"></div>
-  <span class="visually-hidden">Loading...</span>
-</div>
-<ng-template #loadingTpl>
 
+<ng-template #loadingTpl>
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </ng-template>
