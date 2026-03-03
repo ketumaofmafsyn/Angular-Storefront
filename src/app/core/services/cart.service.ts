@@ -15,7 +15,7 @@ export class CartService {
     this._cart().reduce((sum, item) => sum + item.product.price * item.quantity, 0)
   );
 
-  // ✅ Updated: Accept optional quantity (defaults to 1)
+
   addToCart(product: Product, quantity: number = 1) {
     const current = this._cart();
     const existing = current.find(item => item.product.id === product.id);

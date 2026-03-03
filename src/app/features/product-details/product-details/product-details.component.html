@@ -1,4 +1,4 @@
-<!-- ✅ Toast Notification - MUST be outside main container -->
+<!-- ✅ Toast Notification  -->
 <div class="toast-notification" *ngIf="showToast()">
   <div class="toast-content">
     <span class="toast-icon">✓</span>
@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<!-- Main Content -->
+
 <div class="container py-4"  *ngIf="!loading() && product; else loadingTpl">
 
   <!-- Breadcrumb -->

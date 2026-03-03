@@ -41,10 +41,10 @@ import { RouterModule } from '@angular/router';
 </div>
   `,
   styles: [`
-    /* ✅ Centered container with 60% width */
+
     .cart-container {
       max-width: 60%;
-      margin: 0 auto; /* ✅ Centers horizontally */
+      margin: 0 auto;
       padding: 2rem 1rem;
       width: 100%;
     }
@@ -144,16 +144,16 @@ import { RouterModule } from '@angular/router';
       min-width: 140px;
     }
 
-    /* ✅ Responsive: Stack on smaller screens */
+
     @media (max-width: 992px) {
       .cart-container {
-        max-width: 80%; /* Wider on tablets */
+        max-width: 80%;
       }
     }
 
     @media (max-width: 768px) {
       .cart-container {
-        max-width: 95%; /* Almost full width on mobile */
+        max-width: 95%; 
         padding: 1rem;
       }
 

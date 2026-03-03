@@ -98,7 +98,7 @@ margin-top: 4rem !important;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   position: sticky;
-  top: 20px; /* Sticks when scrolling */
+  top: 20px;
 }
 
 .price-section {
@@ -109,7 +109,7 @@ margin-top: 4rem !important;
   .current-price {
     font-size: 2rem;
     font-weight: 700;
-    color: #d32f2f; /* Red price like reference */
+    color: #d32f2f;
     line-height: 1;
     margin: 0.5rem 0;
   }
@@ -163,7 +163,7 @@ margin-top: 4rem !important;
 }
 
 .btn-outline-danger {
-  color: #08732F; // Match brand color instead of red
+  color: #08732F; 
   border-color: #08732F;
 
   &:hover {
