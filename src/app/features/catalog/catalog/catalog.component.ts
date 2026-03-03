@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ProductsService } from '../../../core/services/products.service';
 import { FavoritesService } from '../../../core/services/favorites.service';
 import { Product } from '../../../core/models/core/models/product.model';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-catalog',
@@ -35,6 +36,7 @@ export class CatalogComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
+    private cartService: CartService,
     public favoritesService: FavoritesService
   ) {}
 
@@ -45,6 +47,10 @@ export class CatalogComponent implements OnInit {
   toggleFavorite(productId: number) {
     this.favoritesService.toggleFavorite(productId);
   }
+
+  addToCart(product: Product) {
+  this.cartService.addToCart(product);
+}
 
   isFavorite(productId: number) {
     return this.favoritesService.isFavorite(productId);

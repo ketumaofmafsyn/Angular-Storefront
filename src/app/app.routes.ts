@@ -25,6 +25,11 @@ export const appRoutes: Routes = [
     loadComponent: () =>
       import('../app/features/favorites/favorites/favorites.component').then((m) => m.FavoritesComponent),
   },
+  {
+  path: 'cart',
+  loadComponent: () =>
+    import('../app/features/cart/cart/cart.component').then((m) => m.CartComponent),
+},
 
    {
     path: 'admin',
