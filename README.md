@@ -4,7 +4,7 @@ Moloto Jansen Malema
 Senior Angular Frontend Developer
 GitHub: https://github.com/ketumaofmafsyn
 
-🛒 Angular Product Explorer (DVT Tech Challenge)
+🛒 Angular Product Explorer App
 
 A modern single-page storefront application built with Angular using standalone components, signals, and lazy-loaded routes.
 
